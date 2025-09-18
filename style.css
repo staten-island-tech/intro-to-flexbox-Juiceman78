@@ -8,12 +8,24 @@ html,
 }
 body {
   background-color: #29252f;
+  font-family: "Roboto", sans-serif;
 }
 .card {
   width: 22%;
   height: 500px;
   margin: 25px auto;
   background-color: #e6ecf1;
+  border-radius: 15px;
+}
+@media screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 100%;
+    transition-timing-function: 3.3s;
+  }
 }
 .container {
   width: 90vw;
@@ -42,4 +54,7 @@ body {
   font-size: 7rem;
   font-weight: bold;
   color: #bf4d56;
+}
+.card:hover {
+  transform: scale(1.1);
 }
