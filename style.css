@@ -24,7 +24,6 @@ body {
   }
   .card {
     width: 100%;
-    transition-timing-function: 3.3s;
   }
 }
 .container {
@@ -55,6 +54,8 @@ body {
   font-weight: bold;
   color: #bf4d56;
 }
+
 .card:hover {
   transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }
