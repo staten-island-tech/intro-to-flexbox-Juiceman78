@@ -8,6 +8,54 @@ const animalList = [
     alt: "Me",
   },
   {
+    name: "Blobfish",
+    price: 4141.99,
+    instock: true,
+    class: "Fish",
+    img: "images/blob.jpg",
+    alt: "myat",
+  },
+  {
+    name: "Monster",
+    price: 57777.77,
+    instock: true,
+    class: "Exotic",
+    img: "images/kid.jpg",
+    alt: "mason",
+  },
+  {
+    name: "Imposter",
+    price: 6392.02,
+    instock: true,
+    class: "Exotic",
+    img: "images/imposter.jpg",
+    alt: "sus",
+  },
+  {
+    name: "John-Pork",
+    price: 100000.0,
+    instock: true,
+    class: "Exotic",
+    img: "images/Johnpork.jpg",
+    alt: "pork",
+  },
+  {
+    name: "Hairline",
+    price: 122.99,
+    instock: true,
+    class: "Exotic",
+    img: "images/Hairline.jpg",
+    alt: "Holy-hair",
+  },
+  {
+    name: "Grinch",
+    price: 399339.39,
+    instock: true,
+    class: "Exotic",
+    img: "images/Grinch.webp",
+    alt: "knee",
+  },
+  {
     name: "Cat",
     price: 3.5,
     instock: true,
@@ -87,38 +135,7 @@ const animalList = [
     img: "images/Rainbowbird.jpg",
     alt: "bird",
   },
-  {
-    name: "Imposter",
-    price: 6392.02,
-    instock: true,
-    class: "Exotic",
-    img: "images/imposter.jpg",
-    alt: "sus",
-  },
-  {
-    name: "John-Pork",
-    price: 100000.0,
-    instock: true,
-    class: "Exotic",
-    img: "images/Johnpork.jpg",
-    alt: "pork",
-  },
-  {
-    name: "Hairline",
-    price: 122.99,
-    instock: true,
-    class: "Exotic",
-    img: "images/Hairline.jpg",
-    alt: "Holy-hair",
-  },
-  {
-    name: "Grinch",
-    price: 399339.39,
-    instock: true,
-    class: "Exotic",
-    img: "images/Grinch.webp",
-    alt: "knee",
-  },
+
   {
     name: "Lion",
     price: 7299.99,
@@ -128,14 +145,6 @@ const animalList = [
     alt: "the lion",
   },
   {
-    name: "Monster",
-    price: 57777.77,
-    instock: true,
-    class: "Exotic",
-    img: "images/kid.jpg",
-    alt: "mason",
-  },
-  {
     name: "Eagle",
     price: 9999.99,
     instock: true,
@@ -143,14 +152,7 @@ const animalList = [
     img: "images/eagle.jpg",
     alt: "amurica",
   },
-  {
-    name: "Blobfish",
-    price: 4141.99,
-    instock: true,
-    class: "Fish",
-    img: "images/blob.jpg",
-    alt: "myat",
-  },
+
   {
     name: "Dog",
     price: 933.99,
@@ -168,18 +170,20 @@ function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
     "afterbegin",
-    `<h1>${item.name}</h1>, <h2>${item.price}</h2>,<img src="${item.img}" alt="${item.alt}">`
+    `<div class="card">
+        <h2 class="title">${item.name}</h2>
+        <img src=${item.img} alt="Dog" class="card-img" />
+        <h3 class="price">${item.price}</h3>
+        <button class="button">Buy Me</button>
+      </div> `
   );
 }
-item.forEach((animal) => {});
-inject(animalList[0]);
-inject(animalList[1]);
-inject(animalList[2]);
-inject(animalList[3]);
-inject(animalList[4]);
-inject(animalList[5]);
-inject(animalList[6]);
-inject(animalList[7]);
-inject(animalList[8]);
-inject(animalList[9]);
-inject(animalList[10]);
+animalList.forEach((element) => {
+  inject(element);
+});
+function buy(item) {}
+
+//make array
+//put cards on screen with JS
+//make a cart (HTML, JS)
+// add o cart to button
