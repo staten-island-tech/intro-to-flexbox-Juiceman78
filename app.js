@@ -32,7 +32,7 @@ const animalList = [
     alt: "sus",
   },
   {
-    name: "John-Pork",
+    name: "Johnpork",
     price: 100000.0,
     instock: true,
     class: "Exotic",
@@ -104,7 +104,7 @@ const animalList = [
     alt: "panda",
   },
   {
-    name: "Polar-Bear",
+    name: "Polarbear",
     price: 56999.99,
     instock: true,
     class: "Mammal",
@@ -112,7 +112,7 @@ const animalList = [
     alt: "bear",
   },
   {
-    name: "Puffer-Fish",
+    name: "Pufffish",
     price: 334.99,
     instock: true,
     class: "Fish",
@@ -128,7 +128,7 @@ const animalList = [
     alt: "wabbit",
   },
   {
-    name: "Rainbow-Bird",
+    name: "Rainbow",
     price: 3939.39,
     instock: true,
     class: "Aves",
@@ -174,15 +174,24 @@ function inject(item) {
         <h2 class="title">${item.name}</h2>
         <img src=${item.img} alt="Dog" class="card-img" />
         <h3 class="price">${item.price}</h3>
-        <button class="button">Buy Me</button>
+        <button class="button" id = ${item.name}>Buy Me</button>
       </div> `
   );
 }
 animalList.forEach((element) => {
   inject(element);
 });
-function buy(item) {}
+function getBtn() {
+  const buttons = document.querySelectorAll(".button");
+  const btnArr = Array.from(buttons);
+  btnArr.forEach((btn) =>
+    btn.addEventListener("click", function (event) {
+      console.log(event.target.getAttribute("data-name"));
+    })
+  );
+}
 
+getBtn();
 //make array
 //put cards on screen with JS
 //make a cart (HTML, JS)
