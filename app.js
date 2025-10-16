@@ -174,7 +174,7 @@ function inject(item) {
         <h2 class="title">${item.name}</h2>
         <img src=${item.img} alt="Dog" class="card-img" />
         <h3 class="price">${item.price}</h3>
-        <button class="button" id = ${item.name}>Buy Me</button>
+        <button class="button" id = ${item.name} data-title = ${item.name}>Buy Me</button>
       </div> `
   );
 }
@@ -183,16 +183,26 @@ animalList.forEach((element) => {
 });
 function getBtn() {
   const buttons = document.querySelectorAll(".button");
-  const btnArr = Array.from(buttons);
-  btnArr.forEach((btn) =>
+  buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
-      console.log(event.target.getAttribute("data-name"));
+      console.log(event.target.closest(".button").getAttribute("data-title"));
+      event.target.textContent;
     })
   );
 }
 
 getBtn();
+
+cart = [];
+function addCart(item) {
+  btn.addEventListener("click", function (event) {
+    let item = data.find("data-title");
+    console.log(item);
+  });
+}
+
 //make array
 //put cards on screen with JS
 //make a cart (HTML, JS)
 // add o cart to button
+// find item in array
