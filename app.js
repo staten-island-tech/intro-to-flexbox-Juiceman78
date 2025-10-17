@@ -181,6 +181,8 @@ function inject(item) {
 animalList.forEach((element) => {
   inject(element);
 });
+curBtn = null;
+let cart = [];
 function getBtn() {
   const buttons = document.querySelectorAll(".button");
   buttons.forEach((btn) =>
@@ -193,16 +195,12 @@ function getBtn() {
 
 getBtn();
 
-cart = [];
-function addCart(item) {
-  btn.addEventListener("click", function (event) {
-    let item = data.find("data-title");
-    console.log(item);
-  });
+function addCart(btn) {
+  btn.addEventListener("click", function (event) {});
 }
 
 //make array
 //put cards on screen with JS
 //make a cart (HTML, JS)
-// add o cart to button
+// add to cart to button
 // find item in array
