@@ -181,14 +181,15 @@ function inject(item) {
 animalList.forEach((element) => {
   inject(element);
 });
-curBtn = null;
+let curBtn = [];
 let cart = [];
 function getBtn() {
   const buttons = document.querySelectorAll(".button");
   buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
-      console.log(event.target.closest(".button").getAttribute("data-title"));
+      curBtn.push(event.target.closest(".button").getAttribute("data-title"));
       event.target.textContent;
+      console.log(curBtn);
     })
   );
 }
@@ -196,7 +197,9 @@ function getBtn() {
 getBtn();
 
 function addCart(btn) {
-  btn.addEventListener("click", function (event) {});
+  btn.addEventListener("click", function (event) {
+    curBtn.forEach((animal) =>)
+});
 }
 
 //make array
