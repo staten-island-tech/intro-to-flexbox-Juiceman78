@@ -182,7 +182,6 @@ animalList.forEach((element) => {
   inject(element);
 });
 let curBtn = [];
-let cart = [];
 function getBtn() {
   const buttons = document.querySelectorAll(".button");
   buttons.forEach((btn) =>
@@ -197,9 +196,11 @@ function getBtn() {
 getBtn();
 
 function addCart(btn) {
-  btn.addEventListener("click", function (event) {
-    curBtn.forEach((animal) =>)
-});
+  curBtn.forEach((animal) =>
+    btn.addEventListener("click", function (event) {
+      return animal == "";
+    })
+  );
 }
 
 //make array
