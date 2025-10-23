@@ -181,26 +181,29 @@ function inject(item) {
 animalList.forEach((element) => {
   inject(element);
 });
-let curBtn = [];
+
 function getBtn() {
   const buttons = document.querySelectorAll(".button");
   buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
-      curBtn.push(event.target.closest(".button").getAttribute("data-title"));
-      event.target.textContent;
-      console.log(curBtn);
+      item = event.target.closest(".button").getAttribute("data-title");
+      addCart(item);
     })
   );
 }
 
 getBtn();
 
-function addCart(btn) {
-  curBtn.forEach((animal) =>
-    btn.addEventListener("click", function (event) {
-      return animal == "";
-    })
-  );
+function addCart(item) {
+  let found = animalList.find((animal) => animal.name === item);
+  console.log(found);
+  const container = document.querySelector(".cart");
+  console.log(container);
+  /* container.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="cart">
+    <h4>hi</h4></div>`
+  ); */
 }
 
 //make array
