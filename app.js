@@ -197,13 +197,13 @@ getBtn();
 function addCart(item) {
   let found = animalList.find((animal) => animal.name === item);
   console.log(found);
-  const container = document.querySelector(".cart");
-  console.log(container);
-  /* container.insertAdjacentHTML(
+  const container = document.querySelector(".cartd");
+  container.insertAdjacentHTML(
     "afterbegin",
     `<div class="cart">
-    <h4>hi</h4></div>`
-  ); */
+    <h2>${found.name}</h2>
+    <h2>${found.price}</h2></div>`
+  );
 }
 
 //make array

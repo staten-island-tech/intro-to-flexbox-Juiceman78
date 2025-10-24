@@ -90,3 +90,17 @@ img {
   height: 300px;
   width: 300px;
 }
+.cart {
+  width: 22%;
+  height: 50px;
+  margin: 10px auto;
+  font-size: 5rem;
+}
+.cartd {
+  height: 300px;
+  text-align: center;
+  width: auto;
+  margin: 25px auto;
+  background: cyan;
+  border-radius: 15px;
+}
