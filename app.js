@@ -188,6 +188,8 @@ function getBtn() {
     btn.addEventListener("click", function (event) {
       item = event.target.closest(".button").getAttribute("data-title");
       addCart(item);
+      removeCart();
+      filterCart(item);
     })
   );
 }
@@ -196,14 +198,26 @@ getBtn();
 
 function addCart(item) {
   let found = animalList.find((animal) => animal.name === item);
-  console.log(found);
   const container = document.querySelector(".cartd");
   container.insertAdjacentHTML(
     "afterbegin",
     `<div class="cart">
-    <h2>${found.name}</h2>
-    <h2>${found.price}</h2></div>`
+    <h2 class="name">${found.name}</h2>
+    <h2 class="price">${found.price}</h2></div>
+    <button class= "remove"> Remove Item</button>`
   );
+}
+/* function removeCart() {
+  const buttons = document.querySelectorAll(".remove");
+  buttons.forEach((btn) =>
+    btn.addEventListener("click", function (event) {
+      event.target.closest(".cart").remove();
+    })
+  );
+} */
+
+function filterCart(item) {
+  let category = animalList.find((animal) => animal.name === item);
 }
 
 //make array
