@@ -188,7 +188,7 @@ function getBtn() {
     btn.addEventListener("click", function (event) {
       item = event.target.closest(".button").getAttribute("data-title");
       addCart(item);
-      removeCart();
+      /* removeCart(); */
       filterCart(item);
     })
   );
