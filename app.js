@@ -217,7 +217,16 @@ function addCart(item) {
 } */
 
 function filterCart(item) {
-  let category = animalList.find((animal) => animal.name === item);
+  /* let category = animalList.find((animal) => animal.name === item); */
+  const containertop = document.querySelector(".filter");
+  containertop.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="filter">
+    <button class= "Filter"> Mammal </button>
+    <button class= "Filter"> Fish </button>
+    <button class= "Filter"> Aves </button>
+    <button class= "Filter"> Exotic </button>`
+  );
 }
 
 //make array
