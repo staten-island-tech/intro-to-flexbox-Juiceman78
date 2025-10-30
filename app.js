@@ -162,7 +162,7 @@ const animalList = [
     alt: "man's best friend",
   },
 ];
-
+let total = 0;
 //create inject function
 function injectTop() {
   const containertop = document.querySelector(".filter");
@@ -185,7 +185,7 @@ function inject(item) {
         <h2 class="title">${item.name}</h2>
         <img src=${item.img} alt="Dog" class="card-img" />
         <h3 class="price">${item.price}</h3>
-        <button class="button" id = ${item.name} data-title = ${item.name}>Buy Me</button>
+        <button class="button" id = ${item.name} data-title = ${item.name} data-price = ${item.price}>Buy Me</button>
       </div> `
   );
 }
@@ -198,7 +198,10 @@ function getBtn() {
   buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
       item = event.target.closest(".button").getAttribute("data-title");
-      addCart(item);
+      price = event.target.closest(".button").getAttribute("data-price");
+      add = Number(price);
+      total += add;
+      addCart(item, total);
       /* removeCart(); */
       filterCart(item);
     })
@@ -215,7 +218,8 @@ function addCart(item) {
     `<div class="cart">
     <h2 class="name">${found.name}</h2>
     <h2 class="price">${found.price}</h2></div>
-    <button class= "remove"> Remove Item</button>`
+    <button class= "remove"> Remove Item</button>
+    <h3> "Your total is:" ${total}</h3>`
   );
 }
 /* function removeCart() {
@@ -229,10 +233,10 @@ function addCart(item) {
 
 function filterCart(item) {
   const buttons = document.querySelectorAll(".filter");
-  const category = animalList.find((animal) => animal.name === item);
   buttons.forEach((btn) =>
-    btn.addEventListener("click", function (event) {
-      container.insertAdjacentHTML(
+    btn.addEventListener("click", function () {
+      console.log(category);
+      /* container.insertAdjacentHTML(
         "afterbegin",
         `<div class="card">
         <h2 class="title">${category.name}</h2>
@@ -240,7 +244,7 @@ function filterCart(item) {
         <h3 class="price">${category.price}</h3>
         <button class="button" id = ${category.name} data-title = ${category.name}>Buy Me</button>
       </div> `
-      );
+      ); */
     })
   );
 }
