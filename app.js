@@ -164,7 +164,18 @@ const animalList = [
 ];
 
 //create inject function
-
+function injectTop() {
+  const containertop = document.querySelector(".filter");
+  containertop.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="filter">
+    <button class= "Filter" id = "Mammal"> Mammal </button>
+    <button class= "Filter" id = "Fish"> Fish </button>
+    <button class= "Filter" id ="Aves"> Aves </button>
+    <button class= "Filter" id ="Exotic"> Exotic </button>`
+  );
+}
+injectTop();
 function inject(item) {
   //query the html where we inject the card
   const container = document.querySelector(".container");
@@ -217,15 +228,20 @@ function addCart(item) {
 } */
 
 function filterCart(item) {
-  /* let category = animalList.find((animal) => animal.name === item); */
-  const containertop = document.querySelector(".filter");
-  containertop.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="filter">
-    <button class= "Filter"> Mammal </button>
-    <button class= "Filter"> Fish </button>
-    <button class= "Filter"> Aves </button>
-    <button class= "Filter"> Exotic </button>`
+  const buttons = document.querySelectorAll(".filter");
+  const category = animalList.find((animal) => animal.name === item);
+  buttons.forEach((btn) =>
+    btn.addEventListener("click", function (event) {
+      container.insertAdjacentHTML(
+        "afterbegin",
+        `<div class="card">
+        <h2 class="title">${category.name}</h2>
+        <img src=${category.img} alt="Dog" class="card-img" />
+        <h3 class="price">${category.price}</h3>
+        <button class="button" id = ${category.name} data-title = ${category.name}>Buy Me</button>
+      </div> `
+      );
+    })
   );
 }
 
