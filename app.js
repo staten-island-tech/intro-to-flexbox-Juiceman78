@@ -198,6 +198,7 @@ function getBtn() {
   buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
       item = event.target.closest(".button").getAttribute("data-title");
+      filterCart(item);
       price = event.target.closest(".button").getAttribute("data-price");
       add = Number(price);
       total += add;
@@ -222,21 +223,27 @@ function addCart(item) {
     <h3> "Your total is:" ${total}</h3>`
   );
 }
-/* function removeCart() {
+function removeCart() {
   const buttons = document.querySelectorAll(".remove");
   buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
-      event.target.closest(".cart").remove();
+      const selectedCategory = event.target.textContent.toLowerCase();
+      console.log(selectedCategory);
+      cards.forEach()
     })
   );
-} */
+}
 
 function filterCart(item) {
-  const buttons = document.querySelectorAll(".filter");
+  const buttons = document.querySelectorAll(".Filter");
+  //let category = animalList.find((animal) => animal.name === item);
+  const container = document.querySelector(".filter");
   buttons.forEach((btn) =>
     btn.addEventListener("click", function () {
-      console.log(category);
-      /* container.insertAdjacentHTML(
+      let cat = //get category
+      let category = animalList.find((animal) => animal.name === item);
+      //either remove inner html of container first OR just look at each card and display none if no match
+      container.insertAdjacentHTML(
         "afterbegin",
         `<div class="card">
         <h2 class="title">${category.name}</h2>
@@ -244,7 +251,7 @@ function filterCart(item) {
         <h3 class="price">${category.price}</h3>
         <button class="button" id = ${category.name} data-title = ${category.name}>Buy Me</button>
       </div> `
-      ); */
+      );
     })
   );
 }
