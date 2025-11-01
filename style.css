@@ -105,14 +105,7 @@ img {
   border-radius: 15px;
 }
 .filter {
-  display: block;
   margin: 10px auto;
-  outline: 0;
-  cursor: pointer;
-  border: 1px solid #babfc3;
-  padding: 7px 16px;
-  min-height: 36px;
-  min-width: 36px;
   color: white;
   background: #29252f;
   border-radius: 4px;
@@ -120,4 +113,16 @@ img {
   font-size: 14px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
   font-family: "Courier New", Courier, monospace;
+  outline: 0;
+  cursor: pointer;
+  padding: 7px 16px;
+  min-height: 36px;
+  min-width: 36px;
+}
+.filterContainer {
+  width: 90vw;
+  background-color: #3c3a3c;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
 }

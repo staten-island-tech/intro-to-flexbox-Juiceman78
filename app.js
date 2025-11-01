@@ -164,18 +164,6 @@ const animalList = [
 ];
 let total = 0;
 //create inject function
-function injectTop() {
-  const containertop = document.querySelector(".filter");
-  containertop.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="filter">
-    <button class= "Filter" id = "Mammal"> Mammal </button>
-    <button class= "Filter" id = "Fish"> Fish </button>
-    <button class= "Filter" id ="Aves"> Aves </button>
-    <button class= "Filter" id ="Exotic"> Exotic </button>`
-  );
-}
-injectTop();
 function inject(item) {
   //query the html where we inject the card
   const container = document.querySelector(".container");
@@ -185,7 +173,7 @@ function inject(item) {
         <h2 class="title">${item.name}</h2>
         <img src=${item.img} alt="Dog" class="card-img" />
         <h3 class="price">${item.price}</h3>
-        <button class="button" id = ${item.name} data-title = ${item.name} data-price = ${item.price}>Buy Me</button>
+        <button class="button" id = ${item.name} data-title = ${item.name} data-price = ${item.price} data-class = ${item.class}>Buy Me</button>
       </div> `
   );
 }
@@ -195,16 +183,21 @@ animalList.forEach((element) => {
 
 function getBtn() {
   const buttons = document.querySelectorAll(".button");
+  const filter = document.querySelectorAll(".Filter");
   buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
       item = event.target.closest(".button").getAttribute("data-title");
-      filterCart(item);
       price = event.target.closest(".button").getAttribute("data-price");
       add = Number(price);
       total += add;
       addCart(item, total);
       /* removeCart(); */
-      filterCart(item);
+    })
+  );
+  filter.forEach((btn) =>
+    btn.addEventListener("click", function (event) {
+      cat = event.target.closest(".button").getAttribute("data-class");
+      filterCart(cat);
     })
   );
 }
@@ -229,33 +222,33 @@ function removeCart() {
     btn.addEventListener("click", function (event) {
       const selectedCategory = event.target.textContent.toLowerCase();
       console.log(selectedCategory);
-      cards.forEach()
+      cards.forEach();
     })
   );
 }
 
-function filterCart(item) {
+function filterCart(cat) {
   const buttons = document.querySelectorAll(".Filter");
-  //let category = animalList.find((animal) => animal.name === item);
-  const container = document.querySelector(".filter");
+  // const container = document.querySelector(".filter");
   buttons.forEach((btn) =>
     btn.addEventListener("click", function () {
-      let cat = //get category
-      let category = animalList.find((animal) => animal.name === item);
+      let category = animalList.find((animal) => animal.class === cat);
+      console.log(category);
+      /* let category = animalList.find((animal) => animal.name === item);
       //either remove inner html of container first OR just look at each card and display none if no match
       container.insertAdjacentHTML(
         "afterbegin",
         `<div class="card">
-        <h2 class="title">${category.name}</h2>
+        <h2 class="title">${cat.name}</h2>
         <img src=${category.img} alt="Dog" class="card-img" />
         <h3 class="price">${category.price}</h3>
         <button class="button" id = ${category.name} data-title = ${category.name}>Buy Me</button>
       </div> `
-      );
+      ); */
     })
   );
 }
-
+filterCart();
 //make array
 //put cards on screen with JS
 //make a cart (HTML, JS)
