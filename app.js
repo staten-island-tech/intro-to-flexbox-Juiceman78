@@ -183,7 +183,6 @@ animalList.forEach((element) => {
 
 function getBtn() {
   const buttons = document.querySelectorAll(".button");
-  const filter = document.querySelectorAll(".Filter");
   buttons.forEach((btn) =>
     btn.addEventListener("click", function (event) {
       item = event.target.closest(".button").getAttribute("data-title");
@@ -194,10 +193,10 @@ function getBtn() {
       /* removeCart(); */
     })
   );
-  filter.forEach((btn) =>
+  document.querySelectorAll(".Filter").forEach((btn) =>
     btn.addEventListener("click", function (event) {
-      cat = event.target.closest(".button").getAttribute("data-class");
-      filterCart(cat);
+      const category = event.target.dataset.class; //found on mdn, used to get the data-class inside the button
+      filterCart(category);
     })
   );
 }
@@ -209,46 +208,53 @@ function addCart(item) {
   const container = document.querySelector(".cartd");
   container.insertAdjacentHTML(
     "afterbegin",
-    `<div class="cart">
+    `<div class="cart-item">
     <h2 class="name">${found.name}</h2>
-    <h2 class="price">${found.price}</h2></div>
-    <button class= "remove"> Remove Item</button>
-    <h3> "Your total is:" ${total}</h3>`
+    <p>Price: $${found.price.toFixed(2)}</p>
+    <button class= "remove" data-price="${found.price}" > Remove Item</button> 
+    </div>` //Number.prototype.toFixed()
   );
+  updateTotal();
+  setRemoveButtons();
 }
-function removeCart() {
-  const buttons = document.querySelectorAll(".remove");
-  buttons.forEach((btn) =>
+function updateTotal() {
+  const totalDisplay = document.querySelector(".total");
+
+  if (!totalDisplay) {
+    document
+      .querySelector(".cartd")
+      .insertAdjacentHTML(
+        "beforeend",
+        `<h3 class="total">Total: $${total.toFixed(2)}</h3>`
+      );
+  } else {
+    totalDisplay.textContent = `Total: $${total.toFixed(2)}`;
+  }
+}
+function setRemoveButtons() {
+  document.querySelectorAll(".remove").forEach((btn) =>
     btn.addEventListener("click", function (event) {
-      const selectedCategory = event.target.textContent.toLowerCase();
-      console.log(selectedCategory);
-      cards.forEach();
+      const price = Number(event.target.dataset.price);
+      total -= price;
+      event.target.closest(".cart-item").remove();
+      updateTotal();
     })
   );
 }
 
-function filterCart(cat) {
-  const buttons = document.querySelectorAll(".Filter");
-  // const container = document.querySelector(".filter");
-  buttons.forEach((btn) =>
-    btn.addEventListener("click", function () {
-      let category = animalList.find((animal) => animal.class === cat);
-      console.log(category);
-      /* let category = animalList.find((animal) => animal.name === item);
-      //either remove inner html of container first OR just look at each card and display none if no match
-      container.insertAdjacentHTML(
-        "afterbegin",
-        `<div class="card">
-        <h2 class="title">${cat.name}</h2>
-        <img src=${category.img} alt="Dog" class="card-img" />
-        <h3 class="price">${category.price}</h3>
-        <button class="button" id = ${category.name} data-title = ${category.name}>Buy Me</button>
-      </div> `
-      ); */
-    })
-  );
+function filterCart(category) {
+  const container = document.querySelector(".container");
+  container.innerHTML = ""; // clear previous items
+
+  let filteredAnimals;
+  if (category === "All") {
+    filteredAnimals = animalList;
+  } else {
+    filteredAnimals = animalList.filter((animal) => animal.class === category);
+  }
+  filteredAnimals.forEach((animal) => inject(animal));
+  getBtn();
 }
-filterCart();
 //make array
 //put cards on screen with JS
 //make a cart (HTML, JS)
